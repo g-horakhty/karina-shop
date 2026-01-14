@@ -6,85 +6,126 @@
     <title>Karina Shop | Pedido Online</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- ESTILOS VISUAIS (Identidade Karina Shop) --- */
+        /* --- ESTILOS GERAIS --- */
         :root { --bg-body: #fff9f6; --bg-arch: #f7c5ba; --text-brown: #8a5a44; --text-body: #5a5a5a; --white: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Lato', sans-serif; background-color: var(--bg-body); color: var(--text-body); padding-bottom: 80px; }
         .cursive { font-family: 'Dancing Script', cursive; font-weight: 700; }
         
-        /* Header e Arcos */
         header { background-color: var(--white); padding: 20px 0; text-align: center; }
         .logo { font-size: 3rem; color: var(--text-brown); }
-        .arches-section { background-color: var(--white); padding: 20px 20px 60px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .arch-card { width: 220px; height: 300px; background-color: var(--bg-arch); border-radius: 110px 110px 0 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; text-decoration: none; transition: 0.3s; color: white; }
+
+        /* --- ARCOS COM IMAGEM NO MEIO --- */
+        .arches-section {
+            background-color: var(--white);
+            padding: 20px 20px 60px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .arch-card {
+            width: 220px;
+            height: 300px;
+            background-color: var(--bg-arch);
+            /* O formato do arco */
+            border-radius: 110px 110px 0 0; 
+            
+            /* Centraliza tudo que está dentro */
+            display: flex;
+            flex-direction: column;
+            align-items: center;     /* Centraliza horizontalmente */
+            justify-content: center; /* Centraliza verticalmente */
+            text-align: center;
+            
+            text-decoration: none;
+            transition: 0.3s;
+            padding: 15px;
+            position: relative;
+        }
+
         .arch-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(138, 90, 68, 0.2); }
-        .arch-image { width: 100%; height: 50%; object-fit: cover; margin-bottom: 10px; border-radius: 50%; border: 3px solid white; }
+
+        /* Estilo da Imagem no Meio do Arco */
+        .arch-img-center {
+            width: 140px;          /* Tamanho da imagem */
+            height: 140px;
+            object-fit: cover;     /* Corta a imagem para não esticar */
+            border-radius: 50%;    /* Deixa a imagem redonda */
+            border: 4px solid rgba(255,255,255,0.7); /* Borda branca elegante */
+            margin-bottom: 15px;   /* Espaço entre a imagem e o texto */
+            background-color: #eee;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .arch-title { color: var(--text-brown); font-size: 1.3rem; margin-bottom: 5px; line-height: 1.1; }
+        .arch-text { font-size: 0.85rem; color: var(--white); font-weight: 700; }
+
+        /* --- PRODUTOS --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .intro-text { background-color: var(--white); padding: 0 20px 40px; text-align: center; max-width: 800px; margin: 0 auto; }
         
-        /* Menu */
-        .pink-nav { background-color: var(--bg-arch); padding: 15px 0; margin-bottom: 40px; position: sticky; top: 0; z-index: 100; }
+        .pink-nav { background-color: var(--bg-arch); padding: 15px 0; margin-bottom: 40px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .pink-nav ul { display: flex; justify-content: center; list-style: none; gap: 30px; flex-wrap: wrap; }
-        .pink-nav a { text-decoration: none; color: var(--white); font-weight: 700; text-transform: uppercase; }
+        .pink-nav a { text-decoration: none; color: var(--white); font-weight: 700; text-transform: uppercase; text-shadow: 1px 1px 0 rgba(0,0,0,0.1); }
 
-        /* Produtos */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .section-header { text-align: left; margin-bottom: 30px; border-bottom: 2px solid #eee; }
         .big-title { font-size: 3rem; color: var(--text-brown); }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 30px; margin-bottom: 50px; }
         
-        .product-card { background: var(--white); border: 1px solid #eee; display: flex; height: 220px; overflow: hidden; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        
+        .product-card {
+            background: var(--white); border: 1px solid #eee; border-radius: 8px;
+            display: flex; height: 180px; overflow: hidden;
+        }
+        
         .p-info { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
-        .p-img { width: 180px; object-fit: cover; background: #eee; }
-        .p-title { color: var(--text-brown); font-size: 1.4rem; margin-bottom: 5px; }
-        .p-desc { font-size: 0.85rem; color: #666; margin-bottom: 10px; }
-        .p-price { font-weight: bold; color: #555; font-size: 1.1rem; }
         
-        /* Botão Adicionar */
+        /* Imagem do Produto via CSS (Background) */
+        .p-img-box {
+            width: 160px; height: 100%;
+            background-size: cover; background-position: center;
+            background-color: #eee;
+        }
+
+        .p-title { color: var(--text-brown); font-size: 1.3rem; margin-bottom: 5px; line-height: 1.1; }
+        .p-desc { font-size: 0.8rem; color: #666; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .p-price { font-weight: bold; color: #555; font-size: 1.1rem; }
+
+        /* BOTÕES */
         .btn-add {
-            background-color: var(--bg-arch); color: white; border: none; padding: 8px 15px; 
-            border-radius: 20px; cursor: pointer; margin-top: 10px; font-weight: bold; width: fit-content;
-            transition: 0.2s;
+            background-color: var(--bg-arch); color: white; border: none; padding: 6px 15px; 
+            border-radius: 20px; cursor: pointer; margin-top: 5px; font-weight: bold; width: fit-content;
+            transition: 0.2s; font-size: 0.9rem;
         }
         .btn-add:hover { background-color: #eebbba; transform: scale(1.05); }
 
-        /* --- CARRINHO FLUTUANTE --- */
+        /* CARRINHO */
         .cart-btn-float {
             position: fixed; bottom: 30px; right: 30px;
-            background-color: #25D366; /* Cor do WhatsApp */
-            color: white; padding: 15px 25px; border-radius: 50px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            font-weight: bold; cursor: pointer; z-index: 1000;
-            display: flex; align-items: center; gap: 10px; font-size: 1.1rem;
-            transition: 0.3s;
+            background-color: #25D366; color: white; padding: 15px 25px; border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3); font-weight: bold; cursor: pointer; z-index: 1000;
+            display: flex; align-items: center; gap: 10px; font-size: 1.1rem; transition: 0.3s;
         }
         .cart-btn-float:hover { transform: scale(1.1); }
         .cart-count { background: red; color: white; padding: 2px 8px; border-radius: 50%; font-size: 0.8rem; }
 
-        /* --- MODAL DO CARRINHO --- */
-        .cart-modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 2000;
-            justify-content: center; align-items: center;
-        }
-        .cart-box {
-            background: white; width: 90%; max-width: 500px; padding: 30px;
-            border-radius: 15px; position: relative; max-height: 80vh; overflow-y: auto;
-        }
+        /* MODAL */
+        .cart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; }
+        .cart-box { background: white; width: 90%; max-width: 500px; padding: 30px; border-radius: 15px; position: relative; max-height: 80vh; overflow-y: auto; }
         .close-cart { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #aaa; }
-        
         .cart-item { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 10px 0; }
         .cart-total { font-size: 1.5rem; font-weight: bold; text-align: right; margin-top: 20px; color: var(--text-brown); }
-        
-        .btn-whatsapp {
-            background-color: #25D366; color: white; width: 100%; padding: 15px;
-            border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold;
-            margin-top: 20px; cursor: pointer; text-transform: uppercase;
-        }
+        .btn-whatsapp { background-color: #25D366; color: white; width: 100%; padding: 15px; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; margin-top: 20px; cursor: pointer; text-transform: uppercase; }
+
+        .developer-credit { text-align: center; padding: 30px 20px; font-size: 0.9rem; color: var(--text-brown); background-color: var(--bg-body); border-top: 1px solid rgba(138,90,68,0.1); margin-top: 40px; }
 
         @media (max-width: 768px) {
-            .product-card { height: auto; flex-direction: column-reverse; }
-            .p-img { width: 100%; height: 200px; }
-            .cart-btn-float { bottom: 20px; right: 20px; padding: 12px 20px; }
+            .product-grid { grid-template-columns: 1fr; }
+            .product-card { height: auto; flex-direction: row; }
+            .p-img-box { width: 120px; height: auto; min-height: 120px; }
+            .arches-section { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -93,6 +134,41 @@
     <header>
         <div class="logo cursive">Karina Shop</div>
     </header>
+
+    <section class="arches-section">
+        
+        <a href="#cat-congelados" class="arch-card">
+            <img src="img/arco_congelados.jpg" class="arch-img-center" alt="Congelados" onerror="this.style.opacity='0.3'">
+            
+            <h3 class="cursive arch-title">Congelados</h3>
+            <p class="arch-text">Praticidade no dia a dia</p>
+        </a>
+
+        <a href="#cat-bolos" class="arch-card">
+            <img src="img/arco_encomenda.jpg" class="arch-img-center" alt="Encomenda" onerror="this.style.opacity='0.3'">
+            
+            <h3 class="cursive arch-title">Encomendas</h3>
+            <p class="arch-text">Para momentos especiais</p>
+        </a>
+
+        <a href="#cat-sobremesas" class="arch-card">
+            <img src="img/arco_delivery.jpg" class="arch-img-center" alt="Delivery" onerror="this.style.opacity='0.3'">
+            
+            <h3 class="cursive arch-title">Delivery</h3>
+            <p class="arch-text">Receba em casa</p>
+        </a>
+
+        <div class="arch-card" style="justify-content: center; cursor: default; background: var(--bg-arch);">
+            <div style="text-align: center;">
+                <h2 class="cursive" style="font-size: 2rem; color: #fff;">Karina Shop<br>Itaí - SP</h2>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="intro-text">
+        <p>Karina Shop é referência em confeitaria artesanal em <strong>Itaí/SP</strong>. Produtos feitos com amor e ingredientes selecionados para adoçar sua vida.</p>
+    </div>
 
     <nav class="pink-nav">
         <ul>
@@ -108,6 +184,10 @@
     
     <div style="height: 100px;"></div>
 
+    <div class="developer-credit">
+        <p>Site desenvolvido por <strong>Gabriel Horakhty© 2026 </strong> | Itaí - SP</p>
+    </div>
+
     <div class="cart-btn-float" onclick="toggleCart()">
         🛒 Ver Carrinho <span class="cart-count" id="cart-count">0</span>
     </div>
@@ -116,25 +196,17 @@
         <div class="cart-box">
             <span class="close-cart" onclick="toggleCart()">&times;</span>
             <h2 class="cursive" style="color: var(--text-brown); margin-bottom: 20px;">Seu Pedido</h2>
-            
-            <div id="cart-items-list">
-                <p style="text-align:center; color:#999">Seu carrinho está vazio.</p>
-            </div>
-
+            <div id="cart-items-list"></div>
             <div class="cart-total" id="cart-total-value">Total: R$ 0,00</div>
-            
-            <button class="btn-whatsapp" onclick="checkoutWhatsApp()">
-                Enviar Pedido no WhatsApp 📱
-            </button>
+            <button class="btn-whatsapp" onclick="checkoutWhatsApp()">Enviar no WhatsApp 📱</button>
         </div>
     </div>
 
     <script>
-        // --- CONFIGURAÇÃO ---
-        const whatsappNumber = "5514999999999"; // <--- COLOQUE O NÚMERO AQUI (Ex: 5514999999999)
-        // --------------------
+        const whatsappNumber = "5514999999999"; 
 
-        // DADOS DOS PRODUTOS (Isso será editado pelo Admin)
+        // LISTA DE PRODUTOS
+        // O Admin vai editar esta lista automaticamente
         const products = [
             {
                 "id": 1,
@@ -156,7 +228,6 @@
 
         let cart = [];
 
-        // Inicializar Loja
         function renderStore() {
             const container = document.getElementById('main-content');
             container.innerHTML = '';
@@ -183,7 +254,7 @@
                                             <div class="p-price">R$ ${p.price}</div>
                                             <button class="btn-add" onclick="addToCart(${p.id})">+ Adicionar</button>
                                         </div>
-                                        <img src="img/${p.img}" class="p-img" onerror="this.src='https://placehold.co/200?text=Sem+Foto'">
+                                        <div class="p-img-box" style="background-image: url('img/${p.img}');"></div>
                                     </div>
                                 `).join('')}
                             </div>
@@ -192,21 +263,16 @@
             });
         }
 
-        // Funções do Carrinho
         function addToCart(id) {
             const product = products.find(p => p.id === id);
             cart.push(product);
             updateCartUI();
             
-            // Feedback visual simples
             const btn = event.target;
             let originalText = btn.innerText;
-            btn.innerText = "✔ Adicionado";
+            btn.innerText = "✔";
             btn.style.background = "#25D366";
-            setTimeout(() => {
-                btn.innerText = originalText;
-                btn.style.background = ""; 
-            }, 1000);
+            setTimeout(() => { btn.innerText = originalText; btn.style.background = ""; }, 800);
         }
 
         function removeFromCart(index) {
@@ -215,34 +281,24 @@
         }
 
         function updateCartUI() {
-            // Atualiza bolinha vermelha
             document.getElementById('cart-count').innerText = cart.length;
-
-            // Atualiza lista do Modal
             const list = document.getElementById('cart-items-list');
             list.innerHTML = '';
             let total = 0;
 
             if(cart.length === 0) {
-                list.innerHTML = '<p style="text-align:center; color:#999; padding:20px;">Seu carrinho está vazio.</p>';
+                list.innerHTML = '<p style="text-align:center; color:#999; padding:20px;">Carrinho vazio.</p>';
             } else {
                 cart.forEach((item, index) => {
-                    // Converter preço string "195,00" para float 195.00
                     let priceNum = parseFloat(item.price.replace(',', '.'));
                     total += priceNum;
-
                     list.innerHTML += `
                         <div class="cart-item">
-                            <div>
-                                <strong>${item.name}</strong><br>
-                                <small>R$ ${item.price}</small>
-                            </div>
+                            <div><strong>${item.name}</strong><br><small>R$ ${item.price}</small></div>
                             <button onclick="removeFromCart(${index})" style="background:none; border:none; color:red; font-weight:bold; cursor:pointer;">X</button>
-                        </div>
-                    `;
+                        </div>`;
                 });
             }
-
             document.getElementById('cart-total-value').innerText = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
         }
 
@@ -252,21 +308,16 @@
         }
 
         function checkoutWhatsApp() {
-            if(cart.length === 0) return alert("Seu carrinho está vazio!");
-
-            let message = "*NOVO PEDIDO - KARINA SHOP* 🎂\n\n";
+            if(cart.length === 0) return alert("Carrinho vazio!");
+            let msg = "*PEDIDO - KARINA SHOP* 🎂\n\n";
             let total = 0;
-
             cart.forEach(item => {
-                message += `▪ ${item.name} - R$ ${item.price}\n`;
+                msg += `▪ ${item.name} - R$ ${item.price}\n`;
                 total += parseFloat(item.price.replace(',', '.'));
             });
-
-            message += `\n*TOTAL: R$ ${total.toFixed(2).replace('.', ',')}*`;
-            message += `\n\n------------------------------\nAguardo confirmação e forma de pagamento!`;
-
-            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
+            msg += `\n*TOTAL: R$ ${total.toFixed(2).replace('.', ',')}*`;
+            msg += `\n\nAguardo confirmação!`;
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
         renderStore();
