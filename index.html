@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karina Shop | Itaí-SP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS MANTIDO IGUAL AO ANTERIOR */
+        :root { --bg-body: #fff9f6; --bg-arch: #f7c5ba; --text-brown: #8a5a44; --text-body: #5a5a5a; --white: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lato', sans-serif; background-color: var(--bg-body); color: var(--text-body); }
+        .cursive { font-family: 'Dancing Script', cursive; font-weight: 700; }
+        
+        header { background-color: var(--white); padding: 20px 0; text-align: center; }
+        .logo { font-size: 3rem; color: var(--text-brown); }
+
+        .arches-section { background-color: var(--white); padding: 20px 20px 60px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .arch-card { width: 220px; height: 300px; background-color: var(--bg-arch); border-radius: 110px 110px 0 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; text-decoration: none; transition: 0.3s; }
+        .arch-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(138, 90, 68, 0.2); }
+        .arch-image { width: 100%; height: 50%; object-fit: cover; margin-bottom: 10px; border-radius: 50%; }
+        .arch-title { color: var(--text-brown); font-size: 1.3rem; margin-bottom: 5px; }
+        .arch-text { font-size: 0.85rem; color: var(--white); font-weight: 700; }
+
+        .intro-text { background-color: var(--white); padding: 0 20px 40px; text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.6; }
+        .pink-nav { background-color: var(--bg-arch); padding: 15px 0; margin-bottom: 40px; position: sticky; top: 0; z-index: 100; }
+        .pink-nav ul { display: flex; justify-content: center; list-style: none; gap: 30px; flex-wrap: wrap; }
+        .pink-nav a { text-decoration: none; color: var(--white); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px 60px; }
+        .category-section { margin-bottom: 60px; scroll-margin-top: 100px; }
+        .section-header { text-align: left; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .big-title { font-size: 3rem; color: var(--text-brown); }
+        
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); gap: 30px; }
+        .product-card { background: var(--white); border: 1px solid #eee; display: flex; height: 220px; transition: 0.3s; }
+        .product-card:hover { border-color: var(--bg-arch); }
+        .p-info { padding: 25px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .p-img { width: 200px; background-color: #ddd; object-fit: cover; }
+        .p-title { color: var(--text-brown); font-size: 1.6rem; margin-bottom: 10px; }
+        .p-desc { font-size: 0.9rem; color: #666; line-height: 1.4; }
+        .p-price { font-weight: bold; color: #999; margin-top: 15px; font-size: 1.1rem; }
+
+        .developer-credit { text-align: center; padding: 30px 20px; font-size: 0.9rem; color: var(--text-brown); background-color: var(--bg-body); border-top: 1px solid rgba(138,90,68,0.1); margin-top: 40px; }
+
+        @media (max-width: 768px) {
+            .product-grid { grid-template-columns: 1fr; }
+            .product-card { height: auto; flex-direction: column-reverse; }
+            .p-img { width: 100%; height: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo cursive">Karina Shop</div>
+    </header>
+
+    <section class="arches-section">
+        <a href="#cat-congelados" class="arch-card">
+            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=300&q=80" class="arch-image">
+            <h3 class="cursive arch-title">Congelados</h3>
+            <p class="arch-text">Praticidade em Itaí</p>
+        </a>
+        <a href="#cat-bolos" class="arch-card">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=300&q=80" class="arch-image">
+            <h3 class="cursive arch-title">Encomendas</h3>
+            <p class="arch-text">Bolos Personalizados</p>
+        </a>
+        <a href="#cat-sobremesas" class="arch-card">
+            <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=300&q=80" class="arch-image">
+            <h3 class="cursive arch-title">Delivery</h3>
+            <p class="arch-text">Entregamos em casa</p>
+        </a>
+        <div class="arch-card" style="justify-content: center; cursor: default;">
+            <h2 class="cursive" style="font-size: 2rem; color: #fff;">Karina Shop<br>Itaí - SP</h2>
+        </div>
+    </section>
+
+    <div class="intro-text">
+        <p>Karina Shop é referência em confeitaria artesanal em <strong>Itaí/SP</strong>. Produtos feitos com amor e ingredientes selecionados para adoçar sua vida.</p>
+    </div>
+
+    <nav class="pink-nav">
+        <ul>
+            <li><a href="#cat-bolos">Bolos Naked</a></li>
+            <li><a href="#cat-bento">Bento Cake</a></li>
+            <li><a href="#cat-sobremesas">Sobremesas</a></li>
+            <li><a href="#cat-congelados">Congelados</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" id="main-content">
+        </div>
+
+    <div class="developer-credit">
+        <p>Site desenvolvido por <strong>Gabriel Horakhty</strong> | Itaí/SP</p>
+    </div>
+
+    <script>
+// --- LISTA DE PRODUTOS EDITÁVEL PELO ADMIN ---
+const products = [
+    {
+        "id": 1,
+        "name": "Ninho & Nutella",
+        "category": "bolos",
+        "price": "195,00",
+        "desc": "Massa molhadinha com Ninho e Nutella pura.",
+        "img": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+        "id": 2,
+        "name": "Bento Flork",
+        "category": "bento",
+        "price": "45,00",
+        "desc": "Bolinho na marmita com frase divertida.",
+        "img": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+        "id": 3,
+        "name": "Cookies Congelados",
+        "category": "congelados",
+        "price": "35,00",
+        "desc": "Pacote com 6 unidades prontos para assar.",
+        "img": "https://images.unsplash.com/photo-1499636136210-6f4ee9155bb9?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+        "id": 1768412857585,
+        "name": "lopem ipse",
+        "category": "sobremesas",
+        "price": "50,00",
+        "desc": "lopem ipse loren ipse",
+        "img": "https://placehold.co/200"
+    }
+];
+// ---------------------------------------------
+
+        function renderStore() {
+            const container = document.getElementById('main-content');
+            container.innerHTML = '';
+            
+            const categories = [
+                { id: 'bolos', title: 'Bolos Naked' },
+                { id: 'bento', title: 'Bento Cakes' },
+                { id: 'sobremesas', title: 'Sobremesas' },
+                { id: 'congelados', title: 'Linha Congelados' }
+            ];
+
+            categories.forEach(cat => {
+                const catProducts = products.filter(p => p.category === cat.id);
+                if (catProducts.length > 0) {
+                    container.innerHTML += `
+                        <div id="cat-${cat.id}" class="category-section">
+                            <div class="section-header"><h2 class="cursive big-title">${cat.title}</h2></div>
+                            <div class="product-grid">
+                                ${catProducts.map(p => `
+                                    <div class="product-card">
+                                        <div class="p-info">
+                                            <h3 class="cursive p-title">${p.name}</h3>
+                                            <p class="p-desc">${p.desc}</p>
+                                            <div class="p-price">R$ ${p.price}</div>
+                                        </div>
+                                        <img src="${p.img}" class="p-img">
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>`;
+                }
+            });
+        }
+        renderStore();
+    </script>
+</body>
+</html>
